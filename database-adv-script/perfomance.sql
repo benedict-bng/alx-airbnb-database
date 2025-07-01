@@ -1,5 +1,3 @@
--- performance.sql
-
 SELECT 
     b.booking_id,
     b.booking_date,
@@ -20,7 +18,11 @@ JOIN
 JOIN 
     properties p ON b.property_id = p.property_id
 LEFT JOIN 
-    payments pay ON b.booking_id = pay.booking_id;
+    payments pay ON b.booking_id = pay.booking_id
+WHERE 
+    b.booking_date >= '2024-01-01'  -- Only bookings from 2024
+    AND pay.amount > 0;             -- Only include paid bookings
+
 
 
 EXPLAIN 
