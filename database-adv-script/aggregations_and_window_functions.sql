@@ -31,3 +31,5 @@ LEFT JOIN
 GROUP BY 
     u.user_id, u.first_name, u.last_name;
 
+ROW_NUMBER() OVER (ORDER BY total_bookings DESC) AS booking_rank
+
